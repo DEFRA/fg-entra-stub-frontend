@@ -3,6 +3,7 @@ import { SignJWT } from 'jose'
 import { randomUUID } from 'node:crypto'
 import { authCodes, clients, users } from '../db.js'
 import { privateKey, publicJWK } from '../keys.js'
+import { config } from '../../config/config.js'
 
 export const tokenGetController = {
   method: 'GET',
@@ -35,7 +36,7 @@ export const tokenGetController = {
         kid: publicJWK.kid
       })
       .setIssuedAt()
-      .setIssuer('http://localhost:3005')
+      .setIssuer(`http://localhost:${config.get('port')}`)
       .setAudience(`api://${clientId}`)
       .setExpirationTime('1h')
       .sign(privateKey)
@@ -59,7 +60,7 @@ export const tokenPostController = {
       client_secret: clientSecret
     } = request.payload
 
-    const client = clients[clientId]
+    const client = clients.find((c) => c.id === clientId)
 
     if (!client) {
       throw Boom.badRequest('Invalid client_id')
@@ -104,7 +105,7 @@ export const tokenPostController = {
         kid: publicJWK.kid
       })
       .setIssuedAt()
-      .setIssuer('http://localhost:3005')
+      .setIssuer(`http://localhost:${config.get('port')}`)
       .setAudience(`api://${clientId}`)
       .setExpirationTime('1h')
       .sign(privateKey)

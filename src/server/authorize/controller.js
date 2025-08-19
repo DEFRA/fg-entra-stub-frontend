@@ -91,7 +91,6 @@ export const authorizePostController = {
       (u) => u.username === username && u.password === password
     )
 
-    console.log('User:', user)
     if (!user) {
       return h.view('authorize/index', {
         pageTitle: 'Login',
