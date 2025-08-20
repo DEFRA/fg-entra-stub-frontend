@@ -11,7 +11,9 @@ export const tokenGetController = {
   async handler(request) {
     const { client_id: clientId, user_id: userId } = request.query
 
-    if (!clients[clientId]) {
+    const client = clients.find((c) => c.id === clientId)
+
+    if (!client) {
       throw Boom.badRequest('Invalid client_id')
     }
 
