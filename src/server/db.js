@@ -2,7 +2,7 @@ export const clients = [
   {
     id: 'client1',
     secret: 'secret1',
-    redirectUris: ['http://localhost:3000/login/callback'],
+    redirectUris: ['http://localhost:3002/login/callback'],
     scopes: [
       'openid',
       'profile',

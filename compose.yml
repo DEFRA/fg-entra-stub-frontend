@@ -3,11 +3,10 @@ services:
   fg-entra-stub-frontend:
     build: ./
     ports:
-      - '3000:3000'
+      - '3002:3002'
     env_file:
       - 'compose/aws.env'
     environment:
-      PORT: 3000
       NODE_ENV: development
       USE_SINGLE_INSTANCE_CACHE: true
     networks:

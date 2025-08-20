@@ -155,7 +155,7 @@ docker build --target development --no-cache --tag fg-entra-stub-frontend:develo
 Run:
 
 ```bash
-docker run -p 3000:3000 fg-entra-stub-frontend:development
+docker run -p 3002:3002 fg-entra-stub-frontend:development
 ```
 
 ### Production image
@@ -169,7 +169,7 @@ docker build --no-cache --tag fg-entra-stub-frontend .
 Run:
 
 ```bash
-docker run -p 3000:3000 fg-entra-stub-frontend
+docker run -p 3002:3002 fg-entra-stub-frontend
 ```
 
 ### Docker Compose
