@@ -65,9 +65,11 @@ export const authorizePost = {
   handler(request, h) {
     assertIsValidQuery(request.query)
 
-    const { email, password } = request.payload
+    const { username, password } = request.payload
 
-    const user = users.find((u) => u.email === email && u.password === password)
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    )
 
     if (!user) {
       return h.view('views/authorize', {
@@ -76,7 +78,7 @@ export const authorizePost = {
         validationErrors: [
           {
             text: 'Invalid email or password',
-            href: '#email'
+            href: '#username'
           }
         ]
       })

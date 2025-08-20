@@ -6,7 +6,7 @@ export const sign = {
   method: 'POST',
   path: '/sign',
   async handler(request) {
-    const { clientId, email } = request.payload
+    const { clientId, username } = request.payload
 
     const client = clients.find((c) => c.id === clientId)
 
@@ -14,7 +14,7 @@ export const sign = {
       throw Boom.badRequest('Invalid client_id')
     }
 
-    const user = users.find((u) => u.email === email)
+    const user = users.find((u) => u.username === username)
 
     if (!user) {
       throw Boom.notFound('User not found')
