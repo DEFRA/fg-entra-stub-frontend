@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom'
-import { authCodes, clients } from '../common/db.js'
+import { authCodes } from '../common/auth-codes.js'
+import { clients } from '../common/clients.js'
 import { createToken } from '../common/create-token.js'
 
 export const token = {

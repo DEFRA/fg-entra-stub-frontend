@@ -1,18 +1,3 @@
-export const clients = [
-  {
-    id: 'client1',
-    secret: 'secret1',
-    redirectURIs: ['http://localhost:3000/login/callback'],
-    scopes: [
-      'openid',
-      'profile',
-      'email',
-      'offline_access',
-      'api://client1/cw.backend'
-    ]
-  }
-]
-
 export const users = [
   {
     id: '9f6b80d3-99d3-42dc-ac42-b184595b1ef1',
@@ -36,5 +21,3 @@ export const users = [
     roles: ['FCP.Casework.ReadWrite']
   }
 ]
-
-export const authCodes = {}

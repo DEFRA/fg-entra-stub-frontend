@@ -1,6 +1,8 @@
 import Boom from '@hapi/boom'
 import { randomUUID } from 'node:crypto'
-import { authCodes, clients, users } from '../common/db.js'
+import { authCodes } from '../common/auth-codes.js'
+import { clients } from '../common/clients.js'
+import { users } from '../common/users.js'
 
 const sessions = {}
 
