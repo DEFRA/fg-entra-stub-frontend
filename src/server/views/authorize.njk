@@ -6,12 +6,13 @@
 
 
 {% block content %}
-       {% if validationErrors %}
-         {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: validationErrors
-         }) }}
-        {% endif %}
+  {% if validationErrors %}
+   {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: validationErrors
+   }) }}
+  {% endif %}
+
   {{ appHeading({
     text: heading,
     caption: "Entra ID stub. Does not support real accounts."
@@ -20,12 +21,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-body" data-testid="app-page-body">
-       <form method="POST">
+       <form action="/login" method="POST">
          {{govukInput({
-           id: 'username',
-           name: 'username',
+           id: 'email',
+           name: 'email',
            label: {
-             text: 'Username',
+             text: 'Email',
              classes: 'govuk-label--s'
            },
            classes: 'govuk-input--width-20',

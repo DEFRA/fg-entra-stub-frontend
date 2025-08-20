@@ -2,7 +2,7 @@ export const clients = [
   {
     id: 'client1',
     secret: 'secret1',
-    redirectUris: ['http://localhost:3002/login/callback'],
+    redirectURIs: ['http://localhost:3000/login/callback'],
     scopes: [
       'openid',
       'profile',
@@ -39,7 +39,5 @@ export const users = [
     roles: ['FCP.Casework.ReadWrite']
   }
 ]
-
-export const sessions = {}
 
 export const authCodes = {}
