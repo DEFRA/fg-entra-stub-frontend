@@ -31,7 +31,7 @@ export const config = convict({
   port: {
     doc: 'The port to bind.',
     format: 'port',
-    default: 3002,
+    default: 3010,
     env: 'PORT'
   },
   staticCacheTimeout: {

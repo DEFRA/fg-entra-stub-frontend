@@ -3,7 +3,7 @@ services:
   fg-entra-stub-frontend:
     build: ./
     ports:
-      - '3002:3002'
+      - '3010:3010'
     env_file:
       - 'compose/aws.env'
     environment:

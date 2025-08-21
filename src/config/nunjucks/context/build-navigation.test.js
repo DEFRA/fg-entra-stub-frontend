@@ -9,7 +9,7 @@ describe('#buildNavigation', () => {
     expect(
       buildNavigation(
         mockRequest({
-          url: 'http://localhost:3002/authorize',
+          url: 'http://localhost:3010/authorize',
           path: '/non-existent-path'
         })
       )
@@ -17,7 +17,7 @@ describe('#buildNavigation', () => {
       {
         current: false,
         text: 'Login',
-        href: 'http://localhost:3002/authorize'
+        href: 'http://localhost:3010/authorize'
       }
     ])
   })
@@ -26,7 +26,7 @@ describe('#buildNavigation', () => {
     expect(
       buildNavigation(
         mockRequest({
-          url: 'http://localhost:3002/authorize',
+          url: 'http://localhost:3010/authorize',
           path: '/authorize'
         })
       )
@@ -34,7 +34,7 @@ describe('#buildNavigation', () => {
       {
         current: true,
         text: 'Login',
-        href: 'http://localhost:3002/authorize'
+        href: 'http://localhost:3010/authorize'
       }
     ])
   })

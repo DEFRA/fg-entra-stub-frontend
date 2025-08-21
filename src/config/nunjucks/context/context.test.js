@@ -24,7 +24,7 @@ describe('context and cache', () => {
 
   describe('#context', () => {
     const mockRequest = {
-      url: 'http://localhost:3002/authorize',
+      url: 'http://localhost:3010/authorize',
       path: '/authorize'
     }
 
@@ -55,7 +55,7 @@ describe('context and cache', () => {
             {
               current: true,
               text: 'Login',
-              href: 'http://localhost:3002/authorize'
+              href: 'http://localhost:3010/authorize'
             }
           ],
           serviceName: 'fg-entra-stub-frontend',
@@ -103,7 +103,7 @@ describe('context and cache', () => {
 
   describe('#context cache', () => {
     const mockRequest = {
-      url: 'http://localhost:3002/authorize',
+      url: 'http://localhost:3010/authorize',
       path: '/authorize'
     }
     let contextResult
@@ -142,7 +142,7 @@ describe('context and cache', () => {
             {
               current: true,
               text: 'Login',
-              href: 'http://localhost:3002/authorize'
+              href: 'http://localhost:3010/authorize'
             }
           ],
           serviceName: 'fg-entra-stub-frontend',

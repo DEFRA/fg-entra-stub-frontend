@@ -59,14 +59,14 @@ Keys used to sign and verify tokens are defined in the codebase:
 
 ```bash
 docker build --target development --tag fg-entra-stub-frontend:dev .
-docker run -p 3002:3002 fg-entra-stub-frontend:dev
+docker run -p 3010:3010 fg-entra-stub-frontend:dev
 ```
 
 ### Production
 
 ```bash
 docker build --tag fg-entra-stub-frontend .
-docker run -p 3002:3002 fg-entra-stub-frontend
+docker run -p 3010:3010 fg-entra-stub-frontend
 ```
 
 ### With Docker Compose
