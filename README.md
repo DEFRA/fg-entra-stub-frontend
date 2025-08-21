@@ -33,7 +33,7 @@ Run:
 npm run dev
 ```
 
-## Clients and Accounts
+## Clients and Users
 
 Clients and users are defined in the codebase:
 
