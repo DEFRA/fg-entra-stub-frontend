@@ -53,6 +53,12 @@ Keys used to sign and verify tokens are defined in the codebase:
 - `GET /jwks` - JSON Web Key Set endpoint
 - `POST /sign` - Token signing endpoint
 
+## Generate a token
+
+```sh
+curl -H 'Content-Type: application/json' -d '{"clientId":"client1","username":"admin@t.gov.uk"}' http://localhost:3010/sign
+```
+
 ## Docker
 
 ### Development
