@@ -7,6 +7,13 @@ export const users = [
     roles: ['FCP.Casework.Admin']
   },
   {
+    id: '4c2915b8-527a-4ec5-bcd2-eb769a198ead',
+    username: 'admin_rw@t.gov.uk',
+    password: 'pass',
+    name: 'Test Admin ReaderWriter',
+    roles: ['FCP.Casework.Admin', 'FCP.Casework.ReadWrite']
+  },
+  {
     id: '8b7e28f3-44de-453a-a775-77d11ea9b9a3',
     username: 'reader@t.gov.uk',
     password: 'pass',
