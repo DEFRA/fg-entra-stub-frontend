@@ -46,6 +46,7 @@ export const authorizeGet = {
       authCodes[code] = {
         clientId: request.query.client_id,
         scope: request.query.scope,
+        nonce: request.query.nonce,
         user: session.user
       }
 
@@ -94,6 +95,7 @@ export const authorizePost = {
     authCodes[code] = {
       clientId: request.query.client_id,
       scope: request.query.scope,
+      nonce: request.query.nonce,
       user
     }
 

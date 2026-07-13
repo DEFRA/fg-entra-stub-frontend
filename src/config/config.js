@@ -34,6 +34,14 @@ export const config = convict({
     default: 3010,
     env: 'PORT'
   },
+  oidc: {
+    issuer: {
+      doc: 'Issuer identifier. Advertised by discovery, stamped on every token, and checked by clients, so it must be the url they reach this stub on',
+      format: String,
+      default: 'http://localhost:3010',
+      env: 'OIDC_ISSUER'
+    }
+  },
   staticCacheTimeout: {
     doc: 'Static cache timeout in milliseconds',
     format: Number,

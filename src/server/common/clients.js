@@ -10,5 +10,17 @@ export const clients = [
       'offline_access',
       'api://client1/cw.backend'
     ]
+  },
+  {
+    id: 'fg-grants-platform-admin',
+    secret: 'secret2',
+    redirectURIs: ['http://localhost:3000/login/callback'],
+    scopes: [
+      'openid',
+      'profile',
+      'email',
+      'offline_access',
+      'api://fg-grants-platform-admin/cw.backend'
+    ]
   }
 ]

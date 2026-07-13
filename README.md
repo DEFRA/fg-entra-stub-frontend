@@ -40,6 +40,9 @@ Clients and users are defined in the codebase:
 - [src/server/common/clients.js](src/server/common/clients.js)
 - [src/server/common/users.js](src/server/common/users.js)
 
+Every user has the password `pass`. Set `OIDC_REDIRECT_URIS` to a comma
+separated list to accept the callback urls of the services you are running.
+
 ## Public / Private Keys
 
 Keys used to sign and verify tokens are defined in the codebase:
@@ -48,10 +51,16 @@ Keys used to sign and verify tokens are defined in the codebase:
 
 ## Endpoints
 
+- `GET /.well-known/openid-configuration` - OIDC discovery document
 - `GET/POST /authorize` - OAuth 2.0 authorization endpoint
-- `POST /token` - Token exchange endpoint
+- `POST /token` - Token exchange endpoint, supporting the `authorization_code`
+  and `refresh_token` grants
 - `GET /jwks` - JSON Web Key Set endpoint
 - `POST /sign` - Token signing endpoint
+
+Discovery advertises the issuer set by `OIDC_ISSUER`, which must be the url
+clients reach the stub on, since they check it against the one their tokens
+carry.
 
 ## Generate a token
 

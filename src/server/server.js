@@ -13,6 +13,7 @@ import { requestLogger } from './common/helpers/logging/request-logger.js'
 
 import { health } from './routes/health.js'
 import { jwks } from './routes/jwks.js'
+import { openidConfiguration } from './routes/openid-configuration.js'
 import { token } from './routes/token.js'
 import { sign } from './routes/sign.js'
 import { favicon } from './routes/favicon.js'
@@ -68,6 +69,7 @@ export async function createServer() {
     files,
     health,
     jwks,
+    openidConfiguration,
     authorizeGet,
     authorizePost,
     sign,
