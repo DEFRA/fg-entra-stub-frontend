@@ -26,5 +26,26 @@ export const users = [
     password: 'pass',
     name: 'Test ReaderWriter',
     roles: ['FCP.Casework.ReadWrite']
+  },
+  {
+    id: '6ce46e26-1c9d-42fa-89ec-0c9f3ac980dc',
+    username: 'grant_applications_admin@t.gov.uk',
+    password: 'pass',
+    name: 'Test Grant Applications Admin',
+    roles: ['FCP.GrantApplicationsAdmin']
+  },
+  {
+    id: 'c5afd049-b3ff-4215-8807-a0b0bc95510b',
+    username: 'grant_operations_admin@t.gov.uk',
+    password: 'pass',
+    name: 'Test Grant Operations Admin',
+    roles: ['FCP.GrantOperationsAdmin']
+  },
+  {
+    id: '1e564a98-d15d-4be3-acc6-e6dd38b0b8b1',
+    username: 'grant_admin@t.gov.uk',
+    password: 'pass',
+    name: 'Test Grant Applications & Operations Admin',
+    roles: ['FCP.GrantApplicationsAdmin', 'FCP.GrantOperationsAdmin']
   }
 ]
