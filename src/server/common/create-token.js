@@ -3,7 +3,13 @@ import { randomUUID } from 'node:crypto'
 import { privateKey, publicJWK } from './keys.js'
 import { config } from '../../config/config.js'
 
-export const createToken = async ({ user, clientId, scope }) => {
+export const createToken = async ({
+  user,
+  clientId,
+  scope,
+  audience,
+  includeNonce = true
+}) => {
   return await new SignJWT({
     scope,
     sub: user.id,
@@ -11,7 +17,7 @@ export const createToken = async ({ user, clientId, scope }) => {
     name: user.name,
     email: user.username,
     roles: user.roles,
-    nonce: randomUUID()
+    ...(includeNonce && { nonce: randomUUID() })
   })
     .setProtectedHeader({
       alg: 'RS256',
@@ -20,7 +26,7 @@ export const createToken = async ({ user, clientId, scope }) => {
     })
     .setIssuedAt()
     .setIssuer(`http://localhost:${config.get('port')}`)
-    .setAudience(`api://${clientId}`)
+    .setAudience(audience ?? `api://${clientId}`)
     .setExpirationTime('1h')
     .sign(privateKey)
 }

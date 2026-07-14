@@ -49,8 +49,9 @@ Keys used to sign and verify tokens are defined in the codebase:
 ## Endpoints
 
 - `GET/POST /authorize` - OAuth 2.0 authorization endpoint
-- `POST /token` - Token exchange endpoint
+- `POST /token` - Token endpoint, supports `authorization_code` and `refresh_token` grants, both authenticated with `client_secret_post`
 - `GET /jwks` - JSON Web Key Set endpoint
+- `GET /.well-known/openid-configuration` - OIDC discovery document
 - `POST /sign` - Token signing endpoint
 
 ## Generate a token

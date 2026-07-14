@@ -15,10 +15,21 @@ function statusCodeMessage(statusCode) {
   }
 }
 
+const jsonRoutePaths = new Set([
+  '/token',
+  '/jwks',
+  '/.well-known/openid-configuration',
+  '/sign'
+])
+
 export function catchAll(request, h) {
   const { response } = request
 
   if (!('isBoom' in response)) {
+    return h.continue
+  }
+
+  if (jsonRoutePaths.has(request.path)) {
     return h.continue
   }
 
