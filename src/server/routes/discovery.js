@@ -1,16 +1,21 @@
 import { config } from '../../config/config.js'
 
+const originOf = (hostname) => `http://${hostname}:${config.get('port')}`
+
 export const discovery = {
   method: 'GET',
   path: '/.well-known/openid-configuration',
   handler() {
-    const issuer = `http://localhost:${config.get('port')}`
+    const issuer = originOf('localhost')
+    const internalIssuer = originOf(
+      config.get('internalIssuerHost') ?? 'localhost'
+    )
 
     return {
       issuer,
       authorization_endpoint: `${issuer}/authorize`,
-      token_endpoint: `${issuer}/token`,
-      jwks_uri: `${issuer}/jwks`,
+      token_endpoint: `${internalIssuer}/token`,
+      jwks_uri: `${internalIssuer}/jwks`,
       response_types_supported: ['code'],
       response_modes_supported: ['query', 'form_post'],
       subject_types_supported: ['public'],
