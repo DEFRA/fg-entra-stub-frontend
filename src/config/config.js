@@ -34,13 +34,6 @@ export const config = convict({
     default: 3010,
     env: 'PORT'
   },
-  internalIssuerHost: {
-    doc: 'Hostname (no port) used to build discovery endpoints reached server-to-server (token_endpoint, jwks_uri), e.g. a Docker service name. Combined with the port this stub is bound to. Defaults to localhost, same as the browser-facing authorization_endpoint.',
-    format: String,
-    nullable: true,
-    default: null,
-    env: 'INTERNAL_ISSUER_HOST'
-  },
   staticCacheTimeout: {
     doc: 'Static cache timeout in milliseconds',
     format: Number,

@@ -1,15 +1,29 @@
 import { config } from '../../config/config.js'
 
-const originOf = (hostname) => `http://${hostname}:${config.get('port')}`
+/**
+ * The browser always reaches this stub on localhost, whether the app driving it
+ * runs on the host or inside the compose network, so the endpoints a user agent
+ * is sent to are pinned there. `issuer` is pinned too, because it has to match
+ * the `iss` claim the tokens are signed with.
+ */
+const browserOrigin = () => `http://localhost:${config.get('port')}`
+
+/**
+ * Endpoints called server to server are reached on whichever name the caller
+ * already used to fetch this document, which is the one it carries in the Host
+ * header. An app running on the host discovers on `localhost:3010` and is given
+ * `localhost:3010` back; the same app inside the compose network discovers on
+ * `entra:3010` and is given `entra:3010`. One document serves both without
+ * either having to be told which it is.
+ */
+const internalOrigin = (request) => `http://${request.info.host}`
 
 export const discovery = {
   method: 'GET',
   path: '/.well-known/openid-configuration',
-  handler() {
-    const issuer = originOf('localhost')
-    const internalIssuer = originOf(
-      config.get('internalIssuerHost') ?? 'localhost'
-    )
+  handler(request) {
+    const issuer = browserOrigin()
+    const internalIssuer = internalOrigin(request)
 
     return {
       issuer,
