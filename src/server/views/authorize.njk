@@ -1,7 +1,4 @@
 {% extends 'layouts/page.njk' %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 
@@ -19,40 +16,34 @@
   }) }}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
       <div class="govuk-body" data-testid="app-page-body">
        <form method="POST">
-         {{govukInput({
-           id: 'username',
-           name: 'username',
-           label: {
-             text: 'Email',
-             classes: 'govuk-label--s'
-           },
-           classes: 'govuk-input--width-20',
-           attributes: {
-             autocomplete: 'username'
-           }
-         }) }}
-         {{govukPasswordInput({
-           id: 'password',
-           name: 'password',
-           label: {
-             text: 'Password',
-             classes: 'govuk-label--s'
-           },
-           classes: 'govuk-input--width-20',
-           attributes: {
-             autocomplete: 'current-password'
-           }
-         }) }}
-         {{govukButton({
-           text: 'Login',
-           classes: 'govuk-button--start',
-           attributes: {
-             type: 'submit'
-           }
-         }) }}
+         <table class="govuk-table" id="users">
+           <caption class="govuk-table__caption govuk-table__caption--m">Choose a user</caption>
+           <thead class="govuk-table__head">
+             <tr class="govuk-table__row">
+               <th scope="col" class="govuk-table__header">Name</th>
+               <th scope="col" class="govuk-table__header">Email</th>
+               <th scope="col" class="govuk-table__header">Roles</th>
+               <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+             </tr>
+           </thead>
+           <tbody class="govuk-table__body">
+             {% for user in users %}
+               <tr class="govuk-table__row" data-testid="user">
+                 <th scope="row" class="govuk-table__header">{{ user.name }}</th>
+                 <td class="govuk-table__cell">{{ user.username }}</td>
+                 <td class="govuk-table__cell">{{ user.roles | join(', ') }}</td>
+                 <td class="govuk-table__cell govuk-table__cell--numeric">
+                   <button type="submit" name="username" value="{{ user.username }}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+                     Login<span class="govuk-visually-hidden"> as {{ user.name }}</span>
+                   </button>
+                 </td>
+               </tr>
+             {% endfor %}
+           </tbody>
+         </table>
        </form>
       </div>
     </div>

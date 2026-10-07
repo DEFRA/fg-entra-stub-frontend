@@ -56,7 +56,8 @@ export const authorizeGet = {
 
     return h.view('views/authorize', {
       pageTitle: 'Login',
-      heading: 'Login'
+      heading: 'Login',
+      users
     })
   }
 }
@@ -70,17 +71,20 @@ export const authorizePost = {
     const { username, password } = request.payload
 
     const user = users.find(
-      (u) => u.username === username && u.password === password
+      (u) =>
+        u.username === username &&
+        (password === undefined || u.password === password)
     )
 
     if (!user) {
       return h.view('views/authorize', {
         pageTitle: 'Login',
         heading: 'Login',
+        users,
         validationErrors: [
           {
-            text: 'Invalid email or password',
-            href: '#username'
+            text: 'Invalid user or password',
+            href: '#users'
           }
         ]
       })
